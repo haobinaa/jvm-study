@@ -5,7 +5,7 @@ package com.haobin.jvmstudy.chapater1;
  * @Date 2019-07-29 22:31
  * @Description 类加载过程
  **/
-public class ChapaterOne {
+public class ClassLoad {
 
 
     public static void main(String[] args) {
