@@ -26,6 +26,21 @@ jvm在执行某个类的时候，必须经过加载、连接、初始化，而�
 
 .运行时常量池是在类加载完成之后，将每个class常量池中的符号引用值转存到运行时常量池中，也就是说，每个class都有一个运行时常量池，类在解析之后，将符号引用替换成直接引用，与全局常量池中的引用值保持一致
 
+
+### String 的使用方式
+
+- 使用 ” ” 双引号创建 ： String s1 = “first”;
+- 使用字符串连接符拼接 ： String s2=”se”+”cond”;
+- 使用字符串加引用拼接 ： String s12=”first”+s2;
+- 使用new String(“”)创建 ： String s3 = new String(“three”);
+- 使用new String(“”)拼接 ： String s4 = new String(“fo”)+”ur”;
+- 使用new String(“”)拼接 ： String s5 = new String(“fo”)+new String(“ur”);
+
+这里存储的参考如下:
+
+![](../../../../../../../images/string-pool.png)
+
+
 ## 参考资料
 - [触摸Java常量池](https://www.cnblogs.com/iyangyuan/p/4631696.html)
 - [java中几种常量池的区分](http://tangxman.github.io/2015/07/27/the-difference-of-java-string-pool/)
