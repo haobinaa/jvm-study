@@ -37,3 +37,5 @@ Thread.currentThread().getContextClassLoader()
 // 获取这个类的 ClassLoader
 claszz.getClassLoader()
 ```
+
+使用restartClassLoader 加载的时候 threadlocal 的值取不到， 因为static 变量的threadlocal 每次都被重新加载了
