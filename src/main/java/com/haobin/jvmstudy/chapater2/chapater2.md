@@ -1,6 +1,6 @@
 ### 第二部分 类加载器
 
-#### 类的加载和加载器类型
+#### 类的加载和加载器原理
 
 1. 类的加载
 - 类加载的最终结果是内存中的Class对象
@@ -24,7 +24,7 @@
 [代码例子点击这里](./ClassLoaderTest.java)
 
 
-#### 类加载器原理
+#### 获取类加载器
 
 获取类加载器的方式:
 ```
@@ -37,5 +37,9 @@ Thread.currentThread().getContextClassLoader()
 // 获取这个类的 ClassLoader
 claszz.getClassLoader()
 ```
+
+#### 自定义类加载器
+
+[代码示例](./CustomClassLoader.java)
 
 使用restartClassLoader 加载的时候 threadlocal 的值取不到， 因为static 变量的threadlocal 每次都被重新加载了
