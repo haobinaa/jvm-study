@@ -50,3 +50,37 @@ claszz.getClassLoader()
 [代码示例](./CustomClassLoader.java)
 
 使用restartClassLoader 加载的时候 threadlocal 的值取不到， 因为static 变量的threadlocal 每次都被重新加载了
+
+
+#### 类命名空间
+
+- 每个类加载器都有自己命名空间，由该类加载器及所有父类加载器加载的类组成的
+- 同一个命名空间中，不会出现类的完整名字(含包名)完全相同的两个类
+- 不同类命名空间中可能会出现类完全相同的两个类
+
+结合上述自定义的`CustomCLassLoader`, 有如下:
+``` 
+ClassLoader loader1 = new CustomerClassLoader("loader1");
+ClassLoader loader2 = new CustomerClassLoader(loader1, "loader2");
+ClassLoader loader3 = new CustomerClassLoader("loader3");
+```
+3个classloader都是自定义的， 并且loader1是loader2的父类。 如果都去加载一个类`com.java.test.class`(非classpath下，所以不是AppClassLoader去加载，而是走自定义类加载器)，如下:
+```
+String class = "com.java.test";
+loader1.loadCLass(class);
+loader2.loadCLass(class);
+loader3.loadCLass(class);
+```
+
+这里这个类会被加载两次， 原因是:
+1. loader1会加载这个类， 因为是在非classpath下
+2. loader2去加载的时候，因为loader1是loader2的父类，所以在同一个命名空间下已经被加载过类，就不会在加载
+3. loader3和loader1并非在一个命名空间下，会去重新加载这个类
+
+
+#### 类的卸载
+
+> 当`Sample`类被加载、链接、初始化后，它的生命周期就开始了，当代表`Sample`类的CLass对象不在被引用时，CLass对象就会结束生命周期，方法区的数据也会被卸载，从而结束`Sample`类的生命周期
+
+这里需要注意：
+>java虚拟机自带的类加载器(bootstrap,extension,app)加载的类，始终不会被卸载。因为Java虚拟机本身会一直引用这些类加载器，这些类加载器会始终引用它们所加载的class对象。但是用户自定义的类加载器加载的类是可以被卸载的

@@ -13,6 +13,12 @@ public class CustomClassLoader extends ClassLoader {
 
     private final String fileExtension = ".class";
 
+    private String path;
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
     public CustomClassLoader(String classLoaderName) {
         super();
         this.classLoaderName = classLoaderName;
@@ -32,6 +38,8 @@ public class CustomClassLoader extends ClassLoader {
      */
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
+        System.out.println("load class invoke");
+        System.out.println("load class name:" + name);
         byte[] data = loadClassData(name);
         return this.defineClass(name, data, 0, data.length);
     }
@@ -47,8 +55,9 @@ public class CustomClassLoader extends ClassLoader {
         byte[] data = null;
         ByteArrayOutputStream baos = null;
         try {
-            this.classLoaderName = this.classLoaderName.replace("/", ",");
-            is = new FileInputStream(new File(name + this.fileExtension));
+            name = name.replace(".", "/");
+            System.out.println(name);
+            is = new FileInputStream(new File(this.path + name + this.fileExtension));
             baos = new ByteArrayOutputStream();
             int ch = 0;
             while (-1 != (ch = is.read())) {
@@ -67,6 +76,14 @@ public class CustomClassLoader extends ClassLoader {
            }
         }
         return data;
+    }
+
+    public static void main(String[] args) throws ClassNotFoundException {
+        String path = "/Users/haobin/Desktop/";
+        CustomClassLoader loader1 = new CustomClassLoader("loader1");
+        loader1.setPath(path);
+        Class<?> classzz = loader1.loadClass("com.haobin.jvmstudy.chapater2.CL");
+        System.out.println("class:" + classzz.hashCode());
     }
 
 }
