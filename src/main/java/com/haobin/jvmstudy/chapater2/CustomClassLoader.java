@@ -24,7 +24,12 @@ public class CustomClassLoader extends ClassLoader {
     }
 
 
-
+    /**
+     * loadClass方法会调用本方法加载类
+     * @param name
+     * @return
+     * @throws ClassNotFoundException
+     */
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
         byte[] data = loadClassData(name);
