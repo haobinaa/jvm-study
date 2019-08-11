@@ -56,7 +56,7 @@ public class CustomClassLoader extends ClassLoader {
         ByteArrayOutputStream baos = null;
         try {
             name = name.replace(".", "/");
-            System.out.println(name);
+            this.path = this.path == null ? "" : this.path;
             is = new FileInputStream(new File(this.path + name + this.fileExtension));
             baos = new ByteArrayOutputStream();
             int ch = 0;

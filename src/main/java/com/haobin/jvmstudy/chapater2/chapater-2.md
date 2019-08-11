@@ -61,6 +61,7 @@ claszz.getClassLoader()
 结合上述自定义的`CustomCLassLoader`, 有如下:
 ``` 
 ClassLoader loader1 = new CustomerClassLoader("loader1");
+// loader1 是 loader2 对parent
 ClassLoader loader2 = new CustomerClassLoader(loader1, "loader2");
 ClassLoader loader3 = new CustomerClassLoader("loader3");
 ```
@@ -84,3 +85,11 @@ loader3.loadCLass(class);
 
 这里需要注意：
 >java虚拟机自带的类加载器(bootstrap,extension,app)加载的类，始终不会被卸载。因为Java虚拟机本身会一直引用这些类加载器，这些类加载器会始终引用它们所加载的class对象。但是用户自定义的类加载器加载的类是可以被卸载的
+
+#### 复杂类的加载
+
+[复杂类加载的例子](./MyCat.java)
+
+这个例子说明了命名空间的特性：
+- 父加载器无法访问到子类加载器所加载的类
+- 子类加载器可以访问到父类加载器所加载的类
