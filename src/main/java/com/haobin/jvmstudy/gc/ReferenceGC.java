@@ -12,7 +12,7 @@ import java.util.WeakHashMap;
  *
  * 参考：
  * - [深入理解 Reference](https://www.throwable.club/2019/02/16/java-reference/#Reference%E7%9A%84%E7%AE%80%E4%BB%8B%E5
- * %92%8C%E5%88%86%E7%B1%BB)
+ *  * %92%8C%E5%88%86%E7%B1%BB)
  **/
 public class ReferenceGC {
 
@@ -60,6 +60,7 @@ public class ReferenceGC {
         Object value = new Object();
         weakHashMap.put(key, value);
         System.out.println(weakHashMap.containsValue(value));
+        // weakhashmap
         key = null;
         System.gc();
 
