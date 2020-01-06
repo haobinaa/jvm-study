@@ -17,39 +17,6 @@ import java.util.WeakHashMap;
 public class ReferenceGC {
 
 
-    public static void main(String[] args) throws Exception {
-        softReference();
-    }
-
-    /**
-     * 对象默认都是强引用
-     * 强引用 gc
-     */
-    public static void StrongReferenceGC() {
-        Object originObj = new Object();
-        // 赋值强引用(默认是强引用)
-        Object strongReference = originObj;
-        System.out.println(strongReference == originObj);
-        originObj = null;
-        System.gc();
-        // strongReference gc 后不会被回收
-        System.out.println(strongReference != null);
-    }
-
-
-    /**
-     * WeakReference 所引用的对象在GC后会被自动回收
-     */
-    public static void weakReferenceGC() {
-        Object originObj = new Object();
-        WeakReference<Object> weakReference = new WeakReference<>(originObj);
-        System.out.println(originObj == weakReference.get());
-        originObj = null;
-        System.gc();
-        // weak reference 会再 gc 后被自动回收
-        System.out.println(weakReference.get() != null);
-    }
-
     /**
      * WeakHashMap 用 WeakReference 作 key， 一旦没有指向 key 的强引用， WeakHashMap 在 GC 后删除对应的 entry
      * @throws InterruptedException
