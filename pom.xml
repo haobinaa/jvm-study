@@ -17,6 +17,14 @@
     <maven.compiler.source>1.8</maven.compiler.source>
   </properties>
 
+  <dependencies>
+    <dependency>
+      <groupId>com.lmax</groupId>
+      <artifactId>disruptor</artifactId>
+      <version>3.4.2</version>
+    </dependency>
+  </dependencies>
+
 
 
   <!--  instrumentation agent build -->

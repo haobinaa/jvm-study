@@ -12,4 +12,36 @@
   <artifactId>agent</artifactId>
 
 
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
+          <archive>
+            <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
+<!--            <manifestEntries>-->
+<!--              <Premain-Class>com.jvm.agent.SimpleAgent</Premain-Class>-->
+<!--              <Agent-Class>com.jvm.agent.SimpleAgent</Agent-Class>-->
+<!--              <Can-Redefine-Classes>true</Can-Redefine-Classes>-->
+<!--              <Can-Retransform-Classes>true</Can-Retransform-Classes>-->
+<!--            </manifestEntries>-->
+          </archive>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>attached</goal>
+            </goals>
+            <phase>package</phase>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
 </project>
