@@ -33,8 +33,18 @@
       <artifactId>guava</artifactId>
       <version>28.2-jre</version>
     </dependency>
+    <!--    cglib -->
+    <dependency>
+      <groupId>cglib</groupId>
+      <artifactId>cglib-nodep</artifactId>
+      <version>3.2.10</version>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.16.22</version>
+    </dependency>
   </dependencies>
-
 
 
   <!--  instrumentation agent build -->
