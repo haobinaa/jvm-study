@@ -21,7 +21,7 @@
 
 `ClassLoader.loadClass()`并不会导致类的初始化， `Class.forName`这种反射调用会导致类的初始化
 
-[代码例子点击这里](./ClassLoaderTest.java)
+[代码例子点击这里](../src/main/java/com/haobin/jvmstudy/chapater2/ClassLoaderTest.java)
 
 
 #### 获取类加载器
@@ -47,7 +47,7 @@ claszz.getClassLoader()
 
 #### 自定义类加载器
 
-[代码示例](./CustomClassLoader.java)
+[代码示例](../src/main/java/com/haobin/jvmstudy/chapater2/CustomClassLoader.java)
 
 使用restartClassLoader 加载的时候 threadlocal 的值取不到， 因为static 变量的threadlocal 每次都被重新加载了
 
@@ -88,7 +88,7 @@ loader3.loadCLass(class);
 
 #### 复杂类的加载
 
-[复杂类加载的例子](./MyCat.java)
+[复杂类加载的例子](../src/main/java/com/haobin/jvmstudy/chapater2/MyCat.java)
 
 这个例子说明了命名空间的特性：
 - 父加载器无法访问到子类加载器所加载的类

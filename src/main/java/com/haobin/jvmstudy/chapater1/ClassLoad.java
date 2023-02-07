@@ -13,7 +13,9 @@ public class ClassLoad {
          * 并不会初始化子类， 对于静态字段来说，只有直接定义了静态字段的类才会被初始化
          */
         System.out.println(MyChild.str1);
+
         System.out.println("=================");
+
         /**
          * MyChild2 和 MyParent 都会被初始化， 初始化类的时候会先去初始化该类的父类
          */
@@ -37,7 +39,9 @@ class MyChild extends MyParent {
     }
 }
 class Mychild2 extends MyParent {
+
     public static String str2 = "world";
+
     static {
         System.out.println("myChild2 static block");
     }

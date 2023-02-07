@@ -14,11 +14,13 @@ java class 只有在java程序首次主动使用的时候才会被被 jvm 初始
 5. 初始化一个类的子类
 6. jvm启动的时候被标记为启动类
 
-[使用例子说明](./ClassLoad.java)：
 
-(1) 对于静态字段来说，只有直接定义了静态字段的类才会被初始化
- 
+- 对静态变量对访问
+(1) 对于静态字段来说，只有直接定义了静态字段的类才会被初始化 
 (2) 初始化类的时候会先去初始化该类的父类
+
+[静态字段初始化示例代码](../src/main/java/com/haobin/jvmstudy/chapater1/ClassLoad.java)
+
          
 > -XX:+TraceClassLoading 该参数表示追踪类的加载过程
 
@@ -57,10 +59,10 @@ class ConstClass {
 与`com.haobin.jvmstudy.chapater1.ConstClass`是两个类型， 前者是后者的容器
 
 
-[使用例子说明](./ConstLoad.java)
+[使用例子说明](../src/main/java/com/haobin/jvmstudy/chapater1/ConstLoad.java)
 
 [常量池参考文章](https://www.cnblogs.com/iyangyuan/p/4631696.html)
 
 #### 常量池
 
-[常量池的详细描述和原理](./StringConstPoll.md)
+[常量池的详细描述和原理](../src/main/java/com/haobin/jvmstudy/chapater1/StringConstPoll.md)
